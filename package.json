@@ -9,14 +9,13 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build --target=production -e ${NODE_ENV:-production} --aot"
+    "postinstall": "if [ \"$NODE_ENV\" == production ]; then ng build --aot -prod; fi"
   },
   "private": true,
   "dependencies": {
     "@angular/cli": "1.0.0",
     "@angular/common": "^4.0.0",
     "@angular/compiler": "^4.0.0",
-    "@angular/compiler-cli": "^4.0.0",
     "@angular/core": "^4.0.0",
     "@angular/forms": "^4.0.0",
     "@angular/http": "^4.0.0",
@@ -29,6 +28,7 @@
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
+    "@angular/compiler-cli": "^4.0.0",
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
     "codelyzer": "~2.0.0",
