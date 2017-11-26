@@ -3,8 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { NgDatepickerModule } from 'ng2-datepicker';
-
 import { AppComponent } from './app.component';
 import { SetupComponent } from './setup/setup.component';
 import { MainHeaderComponent } from './main-header/main-header.component';
@@ -22,7 +20,6 @@ import { MainHeaderComponent } from './main-header/main-header.component';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    NgDatepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DatepickerOptions } from "ng2-datepicker";
-
 
 @Component({
   selector: 'setup',
