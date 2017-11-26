@@ -1,26 +1,53 @@
-<form>
+<form [formGroup]="setupForm" (ngSubmit)="calculatePayment()" >
   <div class="form-group row">
     <label for="principal" class="col-sm-4 col-form-label">Principal</label>
     <div class="col-sm-8">
-      <input type="number" class="form-control" id="principal" placeholder="Principal">
+      <input type="number" 
+        formControlName="principal" 
+        [ngClass]="{'is-invalid' : setupForm.controls['principal'].invalid && setupForm.controls['principal'].touched  }"
+        step="25000"
+        class="form-control" 
+        id="principal" 
+        placeholder="Principal">
+      <div class="invalid-feedback" [hidden]="setupForm.controls['principal'].valid" >
+        <span *ngIf="setupForm.controls['principal'].errors && setupForm.controls['principal'].errors.min" >Principal must be  at least 1.</span>
+        <span *ngIf="setupForm.controls['principal'].errors && setupForm.controls['principal'].errors.required" >Principal is required.</span>
+      </div>
     </div>
   </div>
   <div class="form-group row">
     <label for="interest" class="col-sm-4 col-form-label">Annual Interest</label>
     <div class="col-sm-8">
-      <input type="number" class="form-control" id="interest" placeholder="Interest">
+      <input type="number" 
+        formControlName="interest" 
+        [ngClass]="{'is-invalid' : setupForm.controls['interest'].invalid && setupForm.controls['interest'].touched  }"
+        step=".01"
+        class="form-control" id="interest" placeholder="Interest">
+      <div class="invalid-feedback" [hidden]="setupForm.controls['interest'].valid" >
+        <span *ngIf="setupForm.controls['interest'].errors && setupForm.controls['interest'].errors.min" >Interest must be greater than 0.</span>
+        <span *ngIf="setupForm.controls['interest'].errors && setupForm.controls['interest'].errors.required" >Interest is required.</span>
+      </div>
     </div>
   </div>
   <div class="form-group row">
     <label for="amortization" class="col-sm-4 col-form-label">Amortization Years</label>
     <div class="col-sm-8">
-      <input type="number" class="form-control" id="amortization" placeholder="amortization">
+      <input type="number" 
+        formControlName="amortization" 
+        [ngClass]="{'is-invalid' : setupForm.controls['amortization'].invalid && setupForm.controls['amortization'].touched  }"
+        step="1"
+        class="form-control" 
+        id="amortization" placeholder="Amortization Years">
+      <div class="invalid-feedback" [hidden]="setupForm.controls['amortization'].valid" >
+        <span *ngIf="setupForm.controls['amortization'].errors && setupForm.controls['amortization'].errors.min" >Amortization must be at least 1 year.</span>
+        <span *ngIf="setupForm.controls['amortization'].errors && setupForm.controls['amortization'].errors.required" >Amortization is required.</span>
+      </div>
     </div>
   </div>
-  <div class="form-group row">
-    <label for="startDate" class="col-sm-4 col-form-label">Start Date</label>
-    <div class="col-sm-8">
-      <input type="text" class="form-control" id="startDate" placeholder="Start Date">
+  <div class="form-group row text-right">
+    <div class="col-sm-12">
+      <button class="btn btn-primary" [disabled]="setupForm.invalid">Calculate</button>      
     </div>
   </div>
+
 </form>
